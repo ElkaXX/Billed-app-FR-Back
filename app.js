@@ -9,7 +9,12 @@ const billRoute = require('./routes/bill');
 
 const upload = multer({ dest: 'public/' });
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization',
+}));
 app.use(helmet());
 app.use(express.json());
 app.use('/public', express.static('public'));
